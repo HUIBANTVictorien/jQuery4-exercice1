@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery - exercice 1 - partie 4</title>
+    <script src="jquery-3.2.1.js"></script>
+  </head>
+  <body>
+      <select form="listform" name="select">
+          <option id="rock" value="Pierre">Pierre !</option>
+          <option id="paper" value="Feuille">Feuille !</option>
+          <option id="scissor" value="Ciseaux">Ciseaux !</option>
+      </select>
+      <button type="button" name="button">Chifumi !</button>
+      <p id="victory"></p>
+      <p id="lose"></p>
+      <p id="percent"></p>
+      <p id="result"></p>
+      <script>
+      var victory = 1;
+      var lose = 1;
+        $(function() {
+          var array = ['Pierre', 'Feuille', 'Ciseaux'];
+            $('button').click(function() {
+              var x = (Math.floor(Math.random() *3));
+              var game = $('select').val();
+            if (game == array[x]) {
+                $('#result').text(array[x] + ' : égalité !');
+            } else if ((game == 'Feuille' && array[x] == 'Pierre') || (game == 'Pierre' && array[x] == 'Ciseaux') || (game == 'Ciseaux' && array[x] == 'Feuille')) {
+                $('#result').text(array[x] + ' : vous avez gagné !');
+                $('#victory').text('Vous avez gagné ' + victory++ + ' fois');
+            } else {
+                $('#result').text(array[x] + ' : vous avez perdu !');
+                $('#loose').text('Vous avez perdu ' + lose++ + ' fois');
+            }
+            $('#percent').text('Vous avez ' + victory / (victory+lose) * 100 + '% de victoires');
+          });
+        });
+      </script>
+    </ul>
+</body>
+</html>
